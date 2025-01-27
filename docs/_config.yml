@@ -5,7 +5,7 @@ paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
 highlighter: rouge
 markdown: kramdown
-disqus: Demystifying Information Security for Everyone!
+disqus: dbyll
 google_analytics: dbyll
 title: Demystifying Information Security for Everyone
 
