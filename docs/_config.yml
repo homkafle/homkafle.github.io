@@ -14,9 +14,9 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: Hom's Blog
+      title: Demystifying Information Security for Everyone
 
-description: Stylish Jekyll Theme
+description: Hom's Site
 author:
   name: Hom Kafle
   email: webkafle[@]gmail.com
