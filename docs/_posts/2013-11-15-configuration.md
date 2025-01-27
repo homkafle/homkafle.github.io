@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Configuration
-categories: [general, setup, demo]
+categories: [General, Product Security, Artifical Intelligence]
 tags: [demo, dbyll, dbtek, setup]
 fullview: true
 ---
