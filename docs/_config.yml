@@ -7,7 +7,7 @@ highlighter: rouge
 markdown: kramdown
 disqus: dbyll
 google_analytics: dbyll
-title: dbyll
+title: Hom's Site
 
 defaults:
   -
@@ -18,14 +18,14 @@ defaults:
 
 description: Stylish Jekyll Theme
 author:
-  name: dbyll
-  email: dbyll@ismaildemirbilek.com
-  github: dbtek
-  twitter: dbtek
-  pinterest: asd123
-  linkedin: asd123
-  bio: Your stylish, minimalist theme!
-  email_md5: 726351295ec82e145928582f595aa3aa
+  name: Hom Kafle
+  email: webkafle[@]gmail.com
+  github: homkafle
+  twitter: homkafle
+  pinterest: homkafle
+  linkedin: homkafle
+  bio: Product Security Enthusiast | Enhancing Enterprise Security Posture with Secure Design, Offensive Strategies, and Open-Source Risk Management!
+  email_md5: e0fa0c00a8e164a3ded82a1cca81c4fd
 
 rss_path: feed.xml
 categories_path: categories.html
