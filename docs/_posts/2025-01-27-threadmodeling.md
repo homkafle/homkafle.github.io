@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Think Like an Adversary- Threat Modeling for Secure Cloud Applications
+title: Think Like an Adversary - Threat Modeling for Secure Cloud Applications
 categories: [Product Security]
 tags: [Product Security]
 fullview: false
@@ -52,7 +52,7 @@ User Interface (Web/Mobile App): This is the primary interface for both managers
 
 API Gateway: All requests from the User Interface to the backend services pass through the API Gateway. This serves as a single entry point for all API traffic.
 
-<img src="/assets/media/arcdiagram.png" alt="Italian Trulli" width="500" height="600">
+<center><img src="/assets/media/arcdiagram.png" alt="Italian Trulli" width="500" height="600"></center>
 <p><center>Figure : Architecture diagram of Employee Recognition Platform.</center></p>
 
 <b>Authentication Service:</b> Responsible for authenticating users and verifying their identity before 4›4››granting access to the platform.
