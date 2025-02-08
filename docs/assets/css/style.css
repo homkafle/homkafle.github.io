@@ -189,3 +189,8 @@ ul.dropdown-menu>li>a>i.fa {
     width: 1.3em;
 }
 
+.img-circle {
+	width: 50px;   /* Adjust as needed */
+	height: 50px;  /* Adjust as needed */
+	object-fit: cover;  /* Ensures proper scaling */
+  }
