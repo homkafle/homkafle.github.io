@@ -110,6 +110,34 @@ article .share .btn {
   margin: 0 auto;
 }
 
+article.home {
+  padding: 24px 26px;
+  margin-bottom: 20px;
+}
+
+article.home h2 {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+article.home .post-date {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+}
+
+article.home div {
+  color: #1f2937;
+  font-size: 15px;
+}
+
+article.home + hr {
+  display: none;
+}
+
+.pager {
+  margin-top: 10px;
+}
+
 @media (min-width: 992px) {
   .content-wrap {
     padding: 48px 6% 60px;
