@@ -240,7 +240,8 @@ article img {
 }
 
 .featured-card h3 {
-  margin: 8px 0 8px;
+  margin: 10px 0 10px;
+  font-size: 20px;
 }
 
 .featured-excerpt {
@@ -248,7 +249,7 @@ article img {
   font-size: 15px;
   margin: 0 0 16px;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
