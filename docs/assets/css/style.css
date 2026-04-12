@@ -62,34 +62,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.site-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #111827 55%, #0b1220 100%);
-  color: #f8fafc;
-  padding: 36px 0 28px;
-  margin-bottom: 24px;
-}
-
-.site-hero .sidebar-header {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.site-hero #bio {
-  color: #d3dcff;
-}
-
-.sidebar-header .title {
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-size: 13px;
-  margin-top: 10px;
-}
-
-.sidebar-header .title a {
-  text-decoration: none;
-  color: #f8fafc;
-}
-
 #bio {
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
@@ -153,8 +125,7 @@ article {
   box-shadow: var(--shadow);
 }
 
-article > .col-sm-10,
-article > .col-sm-2 {
+article > .post-body {
   padding-left: 0;
   padding-right: 0;
 }
@@ -230,6 +201,14 @@ article img {
   background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
   box-shadow: var(--shadow);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(17, 24, 39, 0.16);
 }
 
 .featured-card h3 {
@@ -240,11 +219,27 @@ article img {
   color: #1f2937;
   font-size: 15px;
   margin: 0 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .featured-link {
   font-weight: 600;
   color: var(--accent);
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 111, 235, 0.2);
+  background: rgba(31, 111, 235, 0.08);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.featured-link:hover {
+  background: rgba(31, 111, 235, 0.14);
+  border-color: rgba(31, 111, 235, 0.35);
 }
 
 footer {
@@ -260,6 +255,7 @@ footer a {
 .navbar {
   border: none;
   box-shadow: 0 6px 24px rgba(15, 23, 42, 0.12);
+  margin-bottom: 0;
 }
 
 .navbar-default {
@@ -318,10 +314,6 @@ ul.dropdown-menu > li > a > i.fa {
 }
 
 @media (max-width: 767px) {
-  .site-hero {
-    padding: 28px 0 20px;
-  }
-
   .content-wrap {
     padding: 0 18px 32px;
   }
