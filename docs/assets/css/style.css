@@ -349,12 +349,6 @@ ul.dropdown-menu > li > a > i.fa {
   width: 1.3em;
 }
 
-.author .author-image {
-  float: left;
-  margin-right: 20px;
-  border-radius: 16px;
-}
-
 .share .btn {
   border-radius: 999px;
   border: 1px solid var(--border);
