@@ -5,47 +5,47 @@ header: Posts By Category
 group: navigation
 ---
 
-<div class="col-sm-3 col-xs-6">
-    <ul class="nav nav-tabs-vertical cat-tag-menu">
-      {% assign categories_list = site.categories %}
-      {% if categories_list.first[0] == null %}
-        {% for category in categories_list %}
-            <li>
-                <a href="#{{ category | replace:' ','-' }}-ref">
-                  {{ category | capitalize }} <span class="badge pull-right">{{ site.categories[category].size }}</span>
-               </a>
-            </li>
-        {% endfor %}
-      {% else %}
-        {% for category in categories_list %}
-            <li>
-                <a href="#{{ category[0] | replace:' ','-' }}-ref">
-                    {{ category[0] | capitalize }} <span class="badge pull-right">{{ category[1].size }}</span>
-                </a>
-            </li>
-        {% endfor %}
-      {% endif %}
-      {% assign categories_list = nil %}
-    </ul>
-</div>
-<!-- Tab panes -->
-<div class="tab-content col-sm-9 col-xs-6">
-  {% for category in site.categories %}
-    <div class="tab-pane" id="{{ category[0] | replace:' ','-' }}-ref">
-      <h2 style="margin-top: 0px">Posts in {{ category[0] | capitalize }}</h2>
-      <ul class="list-unstyled">
-        {% assign pages_list = category[1] %}
-        {% for node in pages_list %}
-          {% if node.title != null %}
-            {% if group == null or group == node.group %}
-              <li style="line-height: 35px;"><a href="{{ site.BASE_PATH }}{{node.url}}">{{node.title}}</a> <span class="text-muted">- {{ node.date | date: "%B %d, %Y" }}</span></li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        {% assign pages_list = nil %}
-      </ul>
-    </div>
-  {% endfor %}
-</div>
+<section class="archive-page">
+  <div class="archive-intro">
+    <p class="archive-kicker">Browse by topic</p>
+    <p>
+      A small index of writing grouped by theme. Pick a category to jump into the
+      articles around that subject.
+    </p>
+  </div>
 
-<div class="clearfix"></div>
+  <div class="category-index">
+    {% for category in site.categories %}
+      <a href="#{{ category[0] | slugify }}-ref">
+        {{ category[0] }}
+        <span>{{ category[1].size }}</span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="category-groups">
+    {% for category in site.categories %}
+      <section class="category-group" id="{{ category[0] | slugify }}-ref">
+        <div class="category-heading">
+          <h2>{{ category[0] }}</h2>
+          <span>{{ category[1].size }} {% if category[1].size == 1 %}post{% else %}posts{% endif %}</span>
+        </div>
+
+        <ol class="archive-list">
+          {% assign pages_list = category[1] %}
+          {% for post in pages_list %}
+            {% if post.title != null %}
+              <li>
+                <a href="{{ site.BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+                <time datetime="{{ post.date | date_to_xmlschema }}">
+                  {{ post.date | date: "%B %d, %Y" }}
+                </time>
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% assign pages_list = nil %}
+        </ol>
+      </section>
+    {% endfor %}
+  </div>
+</section>

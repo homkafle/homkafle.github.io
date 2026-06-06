@@ -278,6 +278,115 @@ article img {
   border-color: rgba(31, 111, 235, 0.35);
 }
 
+.archive-page {
+  max-width: 860px;
+}
+
+.archive-intro {
+  margin: 0 0 28px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.archive-kicker {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.category-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 34px;
+}
+
+.category-index a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.category-index a:hover {
+  border-color: rgba(31, 111, 235, 0.35);
+  color: var(--accent);
+}
+
+.category-index span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.category-groups {
+  display: grid;
+  gap: 28px;
+}
+
+.category-group {
+  padding-top: 2px;
+  border-top: 1px solid var(--border);
+}
+
+.category-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 18px 0 8px;
+}
+
+.category-heading h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.category-heading span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(230, 233, 239, 0.8);
+}
+
+.archive-list a {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.archive-list a:hover {
+  color: var(--accent);
+}
+
+.archive-list time {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 footer {
   padding-top: 15px;
   font-family: 'Manrope', sans-serif;
@@ -376,5 +485,20 @@ ul.dropdown-menu > li > a > i.fa {
 
   article {
     padding: 22px 20px;
+  }
+
+  .archive-page {
+    max-width: none;
+  }
+
+  .category-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .archive-list li {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 }
