@@ -1,93 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>{{ page.title }}</title>
-	{% if page.description %}
-	<meta name="description" content="{{ page.description }}">
+	{% if page.title and page.title != site.title %}
+	<title>{{ page.title }} | {{ site.author.name }}</title>
+	{% else %}
+	<title>{{ site.title }}</title>
 	{% endif %}
+	<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 	<meta name="author" content="{{ site.author.name }}">
-
-	<!-- Enable responsive viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- Le styles -->
-	<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{{ site.BASE_PATH }}/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="{{ site.BASE_PATH }}/assets/resources/syntax/syntax.css" rel="stylesheet">
 	<link href="{{ site.BASE_PATH }}/assets/css/style.css" rel="stylesheet">
-
-	<!-- Le fav and touch icons -->
-	<!-- Update these with your own images
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-	-->
-
-	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.BASE_PATH }}/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.BASE_PATH }}/feed.xml">
 </head>
 
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			{% if site.author.github %}
-			<a type="button" class="navbar-toggle nav-link" href="http://github.com/{{ site.author.github }}">
-				<i class="fa fa-github"></i>
+	<header class="site-header">
+		<div class="site-nav">
+			<a class="brand" href="{{ site.BASE_PATH }}/" aria-label="{{ site.author.name }} home">
+				<span>{{ site.author.name }}</span>
+				<small>Security notes</small>
 			</a>
+
+			<nav class="primary-nav" aria-label="Primary navigation">
+				<a href="{{ site.BASE_PATH }}/">Writing</a>
+				<a href="{{ site.BASE_PATH }}/{{ site.categories_path }}">Topics</a>
+				<a href="{{ site.BASE_PATH }}/{{ site.about_path }}">About</a>
+			</nav>
+		</div>
+	</header>
+
+	<main class="site-main">
+		{{ content }}
+	</main>
+
+	<footer class="site-footer">
+		<p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}. Writing on application security, product security, and AI-assisted engineering.</p>
+		<div class="footer-links">
+			{% if site.author.github %}
+			<a href="https://github.com/{{ site.author.github }}">GitHub</a>
 			{% endif %}
 			{% if site.author.twitter %}
-			<a type="button" class="navbar-toggle nav-link" href="http://twitter.com/{{ site.author.twitter }}">
-				<i class="fa fa-twitter"></i>
-			</a>
+			<a href="https://twitter.com/{{ site.author.twitter }}">Twitter</a>
 			{% endif %}
 			{% if site.author.email %}
-			<a type="button" class="navbar-toggle nav-link" href="mailto:{{ site.author.email }}">
-				<i class="fa fa-envelope"></i>
-			</a>
+			<a href="mailto:{{ site.author.email | replace: '[@]', '@' }}">Email</a>
 			{% endif %}
-			<a class="navbar-brand" href="{{ site.BASE_PATH }}/">
-				{{ site.title }}
-			</a>
+			<a href="{{ site.BASE_PATH }}/feed.xml">RSS</a>
 		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="{{ site.BASE_PATH }}/">Home</a></li>
-				<li><a href="{{ site.BASE_PATH}}/{{ site.categories_path }}">Categories</a></li>
-				<li><a href="{{ site.BASE_PATH}}/{{ site.about_path }}">About Me</a></li>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-		</div>
-	</nav>
-
-	<div class="content-wrap">
-		{{ content }}
-
-		<footer>
-			<hr/>
-			<p>
-				&copy; {{ site.time | date: '%Y' }} {{ site.author.name }} with <a href="http://jekyllrb.com/">Jekyll</a>. Theme: <a href="https://github.com/dbtek/dbyll">dbyll</a> by dbtek.
-			</p>
-		</footer>
-	</div>
-
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/js/app.js"></script>
+	</footer>
 </body>
 </html>

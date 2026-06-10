@@ -1,5 +1,13 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
-</div>
+{% unless page.url == "/" %}
+<header class="page-heading">
+  <p class="eyebrow">Notebook</p>
+  <h1>{{ page.title }}</h1>
+  {% if page.tagline %}
+  <p>{{ page.tagline }}</p>
+  {% endif %}
+</header>
+{% endunless %}
 
-{{ content }}
+<div class="page-content">
+  {{ content }}
+</div>

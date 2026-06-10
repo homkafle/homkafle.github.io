@@ -5,8 +5,6 @@ paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
 highlighter: rouge
 markdown: kramdown
-disqus: dbyll
-google_analytics: dbyll
 title: Demystifying Information Security for Everyone
 
 defaults:
@@ -16,7 +14,7 @@ defaults:
     values:
       title: Demystifying Information Security for Everyone
 
-description: Hom's Blog
+description: Practical notes on product security, application security, AI agents, and secure engineering judgment.
 author:
   name: Hom Kafle
   email: webkafle[@]gmail.com
@@ -29,9 +27,6 @@ author:
 rss_path: feed.xml
 categories_path: categories.html
 about_path: about.html
-
-# set it as url of an image
-# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
 
 BASE_PATH:
 
