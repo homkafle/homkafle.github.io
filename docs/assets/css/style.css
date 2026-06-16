@@ -11,8 +11,8 @@
   --accent: #2f6f5e;
   --accent-strong: #245849;
   --accent-warm: #b85f44;
-  --code-bg: #20261f;
-  --code-text: #edf3e8;
+  --code-bg: #eef3e8;
+  --code-text: #191b16;
   --radius: 8px;
   --measure: 720px;
   --wide: 1040px;
@@ -88,11 +88,18 @@ code {
 pre {
   overflow-x: auto;
   padding: 18px;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--code-bg);
   color: var(--code-text);
   font-size: 0.86em;
   line-height: 1.65;
+}
+
+.highlight,
+.highlight pre {
+  background: var(--code-bg);
+  color: var(--code-text);
 }
 
 pre code {
