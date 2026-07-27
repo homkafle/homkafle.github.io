@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Beyond Prompting: Five Engineering Principles for AI-Assisted Security Review
+title: "Beyond Prompting: Five Engineering Principles for AI-Assisted Security Review"
 categories: [Product Security]
 tags: [ai, appsec, offensive-security, security-review, ai-agents, security-engineering]
 fullview: false
