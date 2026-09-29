@@ -42,7 +42,7 @@ Here's the obvious pushback: the MCP specification isn't silent on any of this. 
 
 So why doesn't any of that show up in the numbers above? Because it's guidance, not enforcement. Every one of those recommendations is a SHOULD, and SHOULD-level guidance a client doesn't implement is functionally indistinguishable from no guidance at all. Claude Code's own documentation says it directly: MCP servers and command hooks are separate processes that run unconstrained on the host [\[19\]](https://code.claude.com/docs/en/sandbox-environments). Sandboxing is something individual developers can opt into — not something the platform turns on for them [\[20\]](https://code.claude.com/docs/en/sandbox-environments).
 
-Across the major coding agents, OpenAI's Codex CLI is the only one that enables sandboxing by default — bubblewrap plus Landlock and seccomp, on Linux. Unlike the others, Codex documentation confirms that MCP server subprocesses run inside the same sandbox, not just the agent's own shell calls. That makes Codex meaningfully ahead of the field here, though it's worth verifying for your specific platform and version. Everyone else — Claude Code, Gemini CLI included — ships sandboxing opt-in, full stop [\[21\]](https://www.mintmcp.com/blog/sandbox-claude-code).
+Across the major coding agents, OpenAI's Codex CLI is the only one that enables sandboxing by default — Landlock and seccomp, on Linux. That default covers the agent's own execution environment: its own shell calls, its own file edits. Whether that containment reaches MCP server subprocesses specifically is a separate question the available documentation doesn't settle, so verify it in your own setup before you rely on it. Everyone else — Claude Code, Gemini CLI included — ships sandboxing opt-in, full stop [\[21\]](https://www.mintmcp.com/blog/sandbox-claude-code).
 
 I don't read this as a protocol failure exactly. The spec authors clearly anticipated the risk. It's a vendor-incentive failure. Sandboxing by default means friction: broken tool calls when a server needs network access you didn't pre-grant, extra setup steps, more support tickets. Shipping unconfined-by-default is the path of least resistance, and every IDE vendor named in the CSA note took it [\[8\]](https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-tool-poisoning-auto-execution-20260701/)[\[19\]](https://code.claude.com/docs/en/sandbox-environments)[\[21\]](https://www.mintmcp.com/blog/sandbox-claude-code). A recommendation nobody enforces is a suggestion. Nothing more.
 
@@ -70,22 +70,22 @@ That's a strange place for a protocol this widely adopted to be sitting in late 
 
 ## References
 
-1. [Prompt Injection in MCP: Tool Poisoning and Blast Radius | Aptible](https://www.aptible.com/mcp-security/mcp-prompt-injection)
-2. [Understanding MCP Tool Poisoning Attacks](https://www.descope.com/learn/post/mcp-tool-poisoning)
-3. [MCP Tool Poisoning | OWASP Foundation](https://community.owasp.org/attacks/MCP_Tool_Poisoning)
-4. [Model Context Protocol Threat Modeling and Analyzing Vulnerabilities to Prompt Injection with Tool Poisoning](https://arxiv.org/abs/2603.22489)
-6. [TrustFall: 1-click coding agent RCE in Claude, Cursor, Copilot](https://adversa.ai/blog/trustfall-coding-agent-security-flaw-rce-claude-cursor-gemini-cli-copilot/)
-8. [MCP Attack Surface: Tool Poisoning and IDE Auto-Execution](https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-tool-poisoning-auto-execution-20260701/)
-9. [Claude Code trust prompt can trigger one-click RCE](https://www.theregister.com/security/2026/05/07/claude_code_trust_prompt_can_trigger_one-click_rce/5235319)
-11. [We Scanned 1,808 MCP Servers. 66% Had Security Findings. - AgentSeal](https://agentseal.org/blog/mcp-server-security-findings)
-13. [MCP Servers: The New Security Nightmare | Equixly](https://equixly.com/blog/2025/03/29/mcp-server-new-security-nightmare/)
-15. [BlueRock MCP Trust Registry](https://www.bluerock.io/mcp-trust-registry)
-16. [Exposed by Design: A Dynamic Security Assessment of Internet-Facing MCP Servers at Scale](https://arxiv.org/abs/2608.00150)
-17. [Security Best Practices - Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)
-19. [Choose a sandbox environment - Claude Code Docs](https://code.claude.com/docs/en/sandbox-environments)
-21. [How to Sandbox Claude Code: Docker, VMs & Container Security Guide | MintMCP Blog](https://www.mintmcp.com/blog/sandbox-claude-code)
-22. [Introducing MCP-Scan: Protecting MCP with Invariant](https://invariantlabs.ai/blog/introducing-mcp-scan)
-23. [slowmist/MCP-Security-Checklist](https://github.com/slowmist/MCP-Security-Checklist)
-24. [Securing MCP: a defense-first architecture guide](https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/)
-25. [Pin upstream MCP tool definitions and require re-approval when one changes](https://github.com/safe-agentic-world/nomos/issues/76)
-27. [CIS Shipped the First MCP Server Benchmark](https://bex.co/blog/2026/09/26/cis-mcp-server-benchmark-hardening-checklist)
+- \[1\] [Prompt Injection in MCP: Tool Poisoning and Blast Radius — Aptible](https://www.aptible.com/mcp-security/mcp-prompt-injection)
+- \[2\] [Understanding MCP Tool Poisoning Attacks](https://www.descope.com/learn/post/mcp-tool-poisoning)
+- \[3\] [MCP Tool Poisoning — OWASP Foundation](https://community.owasp.org/attacks/MCP_Tool_Poisoning)
+- \[4\] [Model Context Protocol Threat Modeling and Analyzing Vulnerabilities to Prompt Injection with Tool Poisoning](https://arxiv.org/abs/2603.22489)
+- \[6\] [TrustFall: 1-click coding agent RCE in Claude, Cursor, Copilot](https://adversa.ai/blog/trustfall-coding-agent-security-flaw-rce-claude-cursor-gemini-cli-copilot/)
+- \[8\] [MCP Attack Surface: Tool Poisoning and IDE Auto-Execution](https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-tool-poisoning-auto-execution-20260701/)
+- \[9\] [Claude Code trust prompt can trigger one-click RCE](https://www.theregister.com/security/2026/05/07/claude_code_trust_prompt_can_trigger_one-click_rce/5235319)
+- \[11\] [We Scanned 1,808 MCP Servers. 66% Had Security Findings. - AgentSeal](https://agentseal.org/blog/mcp-server-security-findings)
+- \[13\] [MCP Servers: The New Security Nightmare — Equixly](https://equixly.com/blog/2025/03/29/mcp-server-new-security-nightmare/)
+- \[15\] [BlueRock MCP Trust Registry](https://www.bluerock.io/mcp-trust-registry)
+- \[16\] [Exposed by Design: A Dynamic Security Assessment of Internet-Facing MCP Servers at Scale](https://arxiv.org/abs/2608.00150)
+- \[17\] [Security Best Practices - Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)
+- \[19\] [Choose a sandbox environment - Claude Code Docs](https://code.claude.com/docs/en/sandbox-environments)
+- \[21\] [How to Sandbox Claude Code: Docker, VMs & Container Security Guide — MintMCP Blog](https://www.mintmcp.com/blog/sandbox-claude-code)
+- \[22\] [Introducing MCP-Scan: Protecting MCP with Invariant](https://invariantlabs.ai/blog/introducing-mcp-scan)
+- \[23\] [slowmist/MCP-Security-Checklist](https://github.com/slowmist/MCP-Security-Checklist)
+- \[24\] [Securing MCP: a defense-first architecture guide](https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/)
+- \[25\] [Pin upstream MCP tool definitions and require re-approval when one changes](https://github.com/safe-agentic-world/nomos/issues/76)
+- \[27\] [CIS Shipped the First MCP Server Benchmark](https://bex.co/blog/2026/09/26/cis-mcp-server-benchmark-hardening-checklist)
