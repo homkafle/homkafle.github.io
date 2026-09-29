@@ -15,7 +15,7 @@ I don't think practitioners have fully absorbed what that means. Descope's secur
 ## Trusted context, root access, zero isolation
 
 ![MCP tool poisoning: when trusted tool metadata becomes an attack surface](/assets/media/MCP1.jpeg)
-*MCP tool poisoning: when trusted tool metadata becomes an attack surface*
+*MCP tool poisoning: when trusted tool metadata becomes an attack surface. Diagram via [Christian Schneider — Securing MCP: a defense-first architecture guide](https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/).*
 
 Here's why this is worse than a garden-variety prompt injection bug. A poisoned tool description doesn't land in a sandboxed chat window. It lands in an agent that, in most mainstream developer tools, runs with your full OS privileges and no containment whatsoever.
 
