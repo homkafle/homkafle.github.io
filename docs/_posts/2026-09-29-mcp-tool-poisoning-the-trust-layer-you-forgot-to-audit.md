@@ -4,7 +4,7 @@ title: "MCP Tool Poisoning — The Trust Layer You Forgot to Audit"
 categories: [Artificial Intelligence, Security]
 tags: [ai-security, llm-security, agentic-ai, tool, poisoning, trust, layer, forgot, audit]
 fullview: false
-description: "Practitioners assume MCP's structured protocol interface is more secure than raw prompt-based tool definitions — but the structure is surface-level: tool descriptions are still natural-language text i"
+description: "MCP tool descriptions are injected into your agent as trusted context — and major IDEs auto-execute MCP servers with full OS privileges and no sandboxing by default. Here are the four controls that close the gap."
 comments: false
 ---
 
