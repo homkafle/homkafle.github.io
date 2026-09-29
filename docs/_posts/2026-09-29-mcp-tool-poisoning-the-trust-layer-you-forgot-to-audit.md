@@ -14,6 +14,9 @@ I don't think practitioners have fully absorbed what that means. Descope's secur
 
 ## Trusted context, root access, zero isolation
 
+![MCP tool poisoning: when trusted tool metadata becomes an attack surface](/assets/media/MCP1.jpeg)
+*MCP tool poisoning: when trusted tool metadata becomes an attack surface*
+
 Here's why this is worse than a garden-variety prompt injection bug. A poisoned tool description doesn't land in a sandboxed chat window. It lands in an agent that, in most mainstream developer tools, runs with your full OS privileges and no containment whatsoever.
 
 Adversa AI's TrustFall research states it without qualification: MCP servers execute as native OS processes with the full privileges of the user running the agent. They are not sandboxed, not confined to the project directory, and not restricted to any subset of the filesystem or network [\[6\]](https://adversa.ai/blog/trustfall-coding-agent-security-flaw-rce-claude-cursor-gemini-cli-copilot/). Sit with that. An MCP server has enough privilege to read stored secrets and source code from other projects, or open a long-lived command-and-control channel — files in ~/.ssh/, ~/.aws/, shell history, and every other project on the same machine are all reachable [\[7\]](https://adversa.ai/blog/trustfall-coding-agent-security-flaw-rce-claude-cursor-gemini-cli-copilot/).
